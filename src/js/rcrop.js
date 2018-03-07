@@ -415,6 +415,23 @@
             return canvas[0].toDataURL();
         };
         
+        // Added by Abhishek Badola
+        this.getDataURLFlipped = function (width, height) {
+            width = width || self.cropData.width;
+            height = height || self.cropData.height;
+            var canvas = $('<canvas width="' + width + '" height="' + height + '"></canvas>');
+            var ctx = canvas[0].getContext('2d');
+
+            ctx.translate(self.cropData.width, 0);
+
+            ctx.scale(-1, 1);
+            ctx.drawImage(self.image.instance, self.cropData.x, self.cropData.y, self.cropData.width, self.cropData.height, 0, 0, width, height);
+
+            // always clean up -- reset transformations to default
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            return canvas[0].toDataURL();
+        };
+        
         this.resize = function(width, height, x, y){
 
             var s = self.settings,
