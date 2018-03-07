@@ -539,7 +539,7 @@
             }
         }
     };
-    $.fn[pluginName].getters = ['getDataURL', 'getValues', 'getRealSize'];
+    $.fn[pluginName].getters = ['getDataURL', 'getDataURLFlipped', 'getValues', 'getRealSize'];
 
 })(jQuery);
 
